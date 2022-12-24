@@ -1,7 +1,6 @@
 import Head from 'next/head'
-import LandingNavbar from '../src/components/landing-navbar'
-import SearchBar from '../src/components/search/search-bar'
-import Image from 'next/image'
+import Navbar from '../src/components/navbar'
+import { CardContainer } from '../src/components/home/card-container'
 
 import { getAuthenticatedUser, getUserData } from '../api/auth'
 import { useEffect, useState } from 'react'
@@ -10,7 +9,6 @@ import { useRouter } from 'next/router'
 export default function Home() {
 
   const [user, setUser] = useState(null)
-  const [query, setQuery] = useState("")
 
   const router = useRouter()
 
@@ -25,21 +23,6 @@ export default function Home() {
     getUser()
   }, [setUser])
 
-  const handleSearchChange = (e) => {
-    setQuery(e.target.value);
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key != "Enter") { return }
-    handleSearch()
-  }
-
-  const handleSearch = () => {
-    router.push({
-      pathname: '/search',
-      query: { query: query },
-    })
-  }
 
   return (
     <div className="min-h-screen min-w-screen overflow-hidden ">
@@ -47,19 +30,32 @@ export default function Home() {
         <title>EdRover</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <LandingNavbar selected={0} authenticated={!!user}/>
+      <Navbar selected={0} authenticated={!!user}/>
     
       <div className="min-h-screen bg-gradient-to-b from-blue-700 to-purple-800 text-center pt-20">
-        <header className="font-header text-white text-3xl mx-5 mt-4">
-          Find the perfect higher education plan for you.
+        <header className="font-header text-white text-3xl mx-5 mt-10">
+          <div>Introducing <span className="font-bold">good screen time.</span></div>
+          <div className="w-1/2 mx-auto text-center text-xl mt-4">Replace games and nonsense with extracurricular activities that lead to higher levels of achievement.</div>
         </header>
-      { user && <div className="font-header text-white text-3xl mx-5 mt-8">
-          Welcome back, <span className="font-bold">{user.name}</span>!
-        </div>}
-        <div onKeyDown={handleKeyDown} className="mt-8">
-          <SearchBar onSearch={handleSearch} onChange={handleSearchChange} />
-        </div>
-        <Image className="bottom-0 fixed" src="/home_image.png" width="1052" height="646"/>
+        <CardContainer cardDetails={[
+          {
+            programName: "Art",
+            instructorName: "Elana Kim",
+            description: "This is art class",
+            thumbnailUrl: "test.com",
+          },
+          {
+            programName: "Art",
+            instructorName: "Elana Kim",
+            description: "This is art class",
+            thumbnailUrl: "test.com",
+          },
+        ]}/>
+      </div>
+      <div className="min-h-screen bg-white from-blue-700 to-purple-800 text-center pt-20">
+        <header className="font-header text-white text-3xl mx-5 mt-10">
+          <div>Hello world</div>
+        </header>
       </div>
       <footer>
       </footer>

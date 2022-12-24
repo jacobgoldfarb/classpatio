@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import NavSearchBar from './search/nav-search-bar'
-import AccountDropdown from './account-dropdown'
 
 export default function Navbar({selected, defaultQuery, onSearch, authenticated}) {
 
@@ -9,10 +7,9 @@ export default function Navbar({selected, defaultQuery, onSearch, authenticated}
             <div className="ml-10">
                 <Logo/>
             </div>
-            <NavSearchBar defaultQuery={defaultQuery} onSearch={onSearch} shouldHide={false}/>
             <div className="flex items-center">
-                { !authenticated && <NavItem selected={selected==3} value={'Login'} path={'/login'}/>}
-                { authenticated && <AccountDropdown className={"mx-8 cursor-pointer"}/>}
+                {<NavItem selected={selected==0} value={'Browse Experiences'} path={'/browse-experiences'}/>}
+                {<NavItem selected={selected==1} value={'Learn More'} path={'/learn-more'}/>}
             </div>
         </div>
     )
@@ -29,6 +26,6 @@ function NavItem({value, path, selected}) {
 
 function Logo() {
     return <Link href={'/'}>
-        <div className="p-5 text-3xl font-body font-semibold cursor-pointer"> {'EdRover'}</div>
+        <div className="p-5 text-3xl font-body font-semibold cursor-pointer"> {'classpatio'}</div>
     </Link>
 }
