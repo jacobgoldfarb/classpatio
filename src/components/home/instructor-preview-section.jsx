@@ -20,8 +20,8 @@ export default function InstructorPreviewSection() {
             </header>
             <div className="mx-20 mt-8">
                 {
-                    instructors.map((instructor) => (
-                        <div className="flex flex-col my-10">
+                    instructors.map((instructor, idx) => (
+                        <div key={idx} className="flex flex-col my-10">
                             <div className="font-semibold">
                                 {instructor.name}
                             </div>
