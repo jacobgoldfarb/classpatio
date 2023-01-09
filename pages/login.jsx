@@ -112,10 +112,9 @@ export default function Login() {
   return (
     <div className="min-h-screen min-w-screen overflow-hidden ">
       <Head>
-        <title>EdRover</title>
+        <title>Class Patio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Navbar selected={0}/> */}
       <LandingNavbar selected={0} authenticated={false}/>
     
         <div className="min-h-screen bg-gradient-to-b from-blue-700 to-purple-800 text-center pt-20">
