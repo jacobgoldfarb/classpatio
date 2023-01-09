@@ -1,21 +1,32 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import CardRatings from './card-ratings'
+export default function Card({classTitle, instructorName, descPreview, thumbnailUrl, handleLearnMore, id, index, classRatings}) {
 
-export default function Card({programName, schoolName, bulletPoints, descPreview, thumbnailUrl, handleLearnMore, id, index, topColor}) {
+    const learnMorePrompt = "View Booking Options"
 
     function getImage() {
-        return <div className="w-full h-20" style={{
-            height: '5rem',
+        return <div 
+        className="
+            rounded-t-xl 
+            w-full 
+            h-28 
+            bg-cover 
+            bg-top 
+            bg-no-repeat
+        " 
+        style={{
             backgroundImage: `url(${thumbnailUrl})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center'
         }} />
     }
 
   return (
       <div 
-        className={"p-3 min-w-1/4 w-1/4 max-w-1/4 bg-white rounded-xl text-sm flex flex-col cursor-pointer"} 
+        className={`
+            min-w-1/6 w-1/6 max-w-1/6 bg-white shadow-lg
+            rounded-xl text-sm text-left flex flex-col cursor-pointer 
+            transition transform hover:scale-105 
+        `} 
         onClick={() => handleLearnMore(index)}
         style={{
             minHeight: "22rem",
@@ -26,34 +37,24 @@ export default function Card({programName, schoolName, bulletPoints, descPreview
         {getImage()}
         <hr className="mb-2"/>
         <div>
-            <div className="font-medium px-3">
-                {programName} 
+            <div className="font-medium mx-3">
+                {classTitle} 
             </div>
-            <div className='italic mt-1 px-3'>
-                {schoolName}
+            <div className='mr-auto text-left mt-1 px-3 font-light'>
+               {`by ${instructorName}`}
             </div>
-            <div className="px-3 text-left ml-2 my-2">
-                {
-                    bulletPoints?.map((point, index) => {
-                        return (
-                            <div key={index}>
-                                {`• ${point}`}
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <div className="p-3 text-left text-sm">
+            <div className="m-3 text-sm font-light">
                 {descPreview}
             </div>
+            <CardRatings ratings={classRatings}/>
         </div>  
-        <div className="mt-auto mb-3 mr-3 w-full cursor-pointer flex items-center" onClick={() => handleLearnMore(id)}>
-            <div className="ml-auto mr-3">
-                {'Learn More '} 
-                <FontAwesomeIcon className="text-gray-600 w-10 h-10 " icon={faChevronRight} />
+        <div className="rounded-lg mt-auto mx-auto my-3 w-3/4 cursor-pointer flex items-center bg-indigo-700 px-3 py-2" onClick={() => handleLearnMore(id)}>
+            <div className="mx-auto text-white">
+                {learnMorePrompt} 
             </div>
         </div>
           
       </div>
   )
 }
+

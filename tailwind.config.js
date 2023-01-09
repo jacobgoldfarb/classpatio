@@ -14,9 +14,9 @@ module.exports = {
         ...colors,
       },
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
-        body: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
-        header: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
+        body: ['Open Sans', 'Helvetica', 'Arial', 'sans-serif'],
+        header: ['Open Sans', 'Helvetica', 'Arial', 'sans-serif'],
         ...defaultTheme.fontFamily,
       },
       boxShadow: {

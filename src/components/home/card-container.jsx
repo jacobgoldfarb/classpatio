@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./card";
+
 export function CardContainer({
   cardDetails,
   handleCardClick
@@ -8,15 +9,12 @@ export function CardContainer({
 
   const truncateLongDesc = (text) => {
     if (!text) { return text }
-    const MAX_LEN = 200
+    const MAX_LEN = 100
     if (text.length > MAX_LEN) {
       text = text.substring(0, MAX_LEN) + "..."
     }
     return text
   }
-
-  const schoolsLogoLookup = require('../../utils/school_thumbnail_lookup.json');
-
 
   return <div className={"w-full mx-auto mt-12 mb-10 items-center flex flex-wrap justify-center gap-14 "}>
     {cardDetails?.map((detail, index) => {
@@ -25,11 +23,12 @@ export function CardContainer({
         key={index} 
         id={index} 
         index={index} 
-        programName={detail.programName} 
+        classTitle={detail.classTitle} 
         instructorName={detail.instructorName} 
         descPreview={descriptionPreview} 
         thumbnailUrl={detail.thumbnailUrl} 
         topColor={colors[index % colors.length]} 
+        classRatings={detail.classRatings}
         handleLearnMore={handleCardClick} />;
     })}
   </div>;

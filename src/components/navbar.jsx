@@ -26,6 +26,8 @@ function NavItem({value, path, selected}) {
 
 function Logo() {
     return <Link href={'/'}>
-        <div className="p-5 text-3xl font-body font-semibold cursor-pointer"> {'classpatio'}</div>
+        <div className="p-5 text-3xl font-body font-semibold cursor-pointer"> 
+            {'class'}<span className="font-light">patio</span>
+        </div>
     </Link>
 }
