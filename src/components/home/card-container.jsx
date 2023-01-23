@@ -19,17 +19,19 @@ export function CardContainer({
   return <div className={"w-full mx-auto mt-12 mb-10 items-center flex flex-wrap justify-center gap-14 "}>
     {cardDetails?.map((detail, index) => {
       const descriptionPreview = truncateLongDesc(detail.description);
-      return <Card 
-        key={index} 
-        id={index} 
-        index={index} 
-        classTitle={detail.classTitle} 
-        instructorName={detail.instructorName} 
-        descPreview={descriptionPreview} 
-        thumbnailUrl={detail.thumbnailUrl} 
-        topColor={colors[index % colors.length]} 
-        classRatings={detail.classRatings}
-        handleLearnMore={handleCardClick} />;
+      return (
+        <Card 
+          key={index} 
+          id={index} 
+          index={index} 
+          classTitle={detail.classTitle} 
+          instructorName={detail.instructorName} 
+          descPreview={descriptionPreview} 
+          thumbnailUrl={detail.thumbnailUrl} 
+          topColor={colors[index % colors.length]} 
+          classRatings={detail.classRatings}
+          handleLearnMore={handleCardClick} />
+      )
     })}
   </div>;
 }

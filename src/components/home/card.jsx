@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CardRatings from './card-ratings'
+
 export default function Card({classTitle, instructorName, descPreview, thumbnailUrl, handleLearnMore, id, index, classRatings}) {
 
     const learnMorePrompt = "View Booking Options"
@@ -48,7 +47,12 @@ export default function Card({classTitle, instructorName, descPreview, thumbnail
             </div>
             <CardRatings ratings={classRatings}/>
         </div>  
-        <div className="rounded-lg mt-auto mx-auto my-3 w-3/4 cursor-pointer flex items-center bg-indigo-700 px-3 py-2" onClick={() => handleLearnMore(id)}>
+        <div className="
+        rounded-lg 
+        mt-auto mx-auto my-3  px-3 py-2
+        w-3/4 cursor-pointer flex 
+        transition transform hover:scale-105 
+        items-center bg-indigo-700" onClick={() => handleLearnMore(id)}>
             <div className="mx-auto text-white">
                 {learnMorePrompt} 
             </div>
